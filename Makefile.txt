@@ -1,0 +1,16 @@
+CC = gcc
+CFLAGS = -Wall
+MAIN = mcp251xfd_ctrl
+OBJS = mcp251xfd_ctrl.o
+LIBDIR = /usr/local/lib/
+LIBS = -L$(LIBDIR) -lbcm2835
+MYLIB = libmcp251xfd_ctrl.so
+
+$(MYLIB) : $(OBJS)
+	$(CC) $(CFLAGS) -o $(LIBDIR)$(MYLIB) -Wl,--whole-archive $(LIBS) -Wl,--no-whole-archive -shared $(OBJS)
+
+$(OBJS) : mcp251xfd_ctrl.c mcp251xfd_ctrl.h
+	$(CC) $(CFLAGS) -c mcp251xfd_ctrl.c $(LIBS)
+
+clean:
+	rm $(OBJS) $(LIBDIR)$(MYLIB)
