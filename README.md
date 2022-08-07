@@ -24,4 +24,4 @@ Wakeup Controls
 INT/GPIO/STDBY Control
   - various settings for use of optional pins
 
-* some functions have been made static to avoid misuse *
+*some functions have been made static to avoid misuse*
